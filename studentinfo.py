@@ -51,6 +51,18 @@ def submit():
 sub = ttk.Button(win, text = " Submit " , command=submit)
 sub.grid(row=4,column=1)
 
+''' fill button '''
+def fill():
+    if roll.get():
+        sqlf = "select * from students where roll="+ str(roll.get()) 
+        mycursor.execute(sqlf)
+        for x in mycursor:
+            name_entry.insert(0,x[1])
+            phone_entry.insert(0,x[3])
+                    
+fil = ttk.Button(win, text = "Fill " , command=fill)
+fil.grid(column=3,row=2,padx=4)
+
 '''Update button'''
 def update():
     if name.get() and phone.get() and roll.get():
